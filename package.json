@@ -1,0 +1,21 @@
+{
+  "name": "deviget-nodejs-challenge",
+  "version": "0.0.0",
+  "description": "Challenge for the enterprise Deviget using Nodejs and React",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@personal-gitlab:luisbar/deviget-nodejs-challenge.git"
+  },
+  "author": "luisbar",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
