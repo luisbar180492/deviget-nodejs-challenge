@@ -20,11 +20,10 @@ const room = {
 }
 
 const onMessage = (data, ack) => {
-  if (room.playerOne.id === data.id)
+  if (room.playerOne.id === data.socketId)
     return room.playerTwo.send(data, () => ack())
-  if (room.playerTwo.id === data.id)
+  if (room.playerTwo.id === data.socketId)
     return room.playerOne.send(data, () => ack())
-
 }
 
 const onDisconnect = (socket) => (reason) => {
@@ -40,8 +39,8 @@ io.on('connection', (socket) => {
   
   if (!room.playerOne) return room.playerOne = socket
   room.playerTwo = socket
-  room.playerOne.emit('ready', { id: room.playerOne.id })
-  room.playerTwo.emit('ready', { id: room.playerOne.id })
+  room.playerOne.emit('ready', { playerOne: room.playerOne.id, playerTwo: room.playerTwo.id })
+  room.playerTwo.emit('ready', { playerOne: room.playerOne.id, playerTwo: room.playerTwo.id })
 })
 
 httpServer.listen(PORT, () => console.log(`Server running on ${PORT}`))
