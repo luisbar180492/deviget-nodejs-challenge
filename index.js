@@ -9,14 +9,6 @@ const io = require('socket.io')(httpServer, {
 const room = {
   playerOne: undefined,
   playerTwo: undefined,
-  board: [
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0],
-  ],
 }
 
 const onMessage = (data, ack) => {
