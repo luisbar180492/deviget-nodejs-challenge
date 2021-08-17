@@ -1,15 +1,22 @@
 const PORT = process.env.PORT || 3001
-const httpServer = require('http').createServer()
-const io = require('socket.io')(httpServer, {
-  cors: {
-    origin: ['http://localhost:3000'],
-  },
-})
-
+const express = require('express')
+const path = require('path')
+const app = express()
+const publicPath = path.join(__dirname, '/public')
 const room = {
   playerOne: undefined,
   playerTwo: undefined,
 }
+
+app.use(express.static(publicPath))
+app.get('/', (req, res) => res.sendFile(`${publicPath}/index.html`))
+const server = app.listen(PORT, () => console.log(`Server running on ${PORT}`))
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: ['http://localhost:3000', 'https://deviget-react-challenge.herokuapp.com'],
+  },
+})
 
 const onMessage = (data, ack) => {
   if (room.playerOne.id === data.socketId)
@@ -34,5 +41,3 @@ io.on('connection', (socket) => {
   room.playerOne.emit('ready', { playerOne: room.playerOne.id, playerTwo: room.playerTwo.id })
   room.playerTwo.emit('ready', { playerOne: room.playerOne.id, playerTwo: room.playerTwo.id })
 })
-
-httpServer.listen(PORT, () => console.log(`Server running on ${PORT}`))

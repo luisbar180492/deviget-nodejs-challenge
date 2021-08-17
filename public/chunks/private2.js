@@ -1,0 +1,1 @@
+(self.webpackChunkdeviget_react_challenge=self.webpackChunkdeviget_react_challenge||[]).push([[90],{2736:(e,c,t)=>{"use strict";t.r(c),t.d(c,{default:()=>a}),t(7294);const a={}}}]);

@@ -4,8 +4,8 @@
   "description": "Challenge for the enterprise Deviget using Nodejs and React",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
-    "start:prd": "pm2 start index.js"
+    "start": "pm2 start index.js",
+    "start:dev": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
   "author": "luisbar",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "pm2": "^5.1.0",
     "socket.io": "^4.1.3"
   },
