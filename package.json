@@ -4,7 +4,7 @@
   "description": "Challenge for the enterprise Deviget using Nodejs and React",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js",
+    "start": "node index",
     "start:dev": "nodemon index"
   },
   "repository": {
